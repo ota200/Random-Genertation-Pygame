@@ -96,7 +96,7 @@ for i in range(amount):
 
 num = 0
 for i in range(amount):
-    final_y2.append(int((y_new2[num]+y_axis[num])/2))
+    final_y2.append(int((y_new2[num]+y_new2[num]+y_new[num] + y_new2[num]+y_new[num])/5))
     num +=1
 
 p.init()
@@ -155,14 +155,14 @@ while running:
             #print("X AXIS VALUE: ")
             #print(x_axis[len(x_axis)-1])
 
-            p.draw.circle(screen, (0, 0, 255), (x_screen, y_axis[len(y_axis)-1]), 5)
+            #p.draw.circle(screen, (0, 0, 255), (x_screen, y_axis[len(y_axis)-1]), 5)
 
-            p.draw.line(screen,(255,0,77), ((x_axis[len(x_axis)-1]), (y_axis[len(y_axis)-1])), (x_screen, y_axis[len(y_axis)-1]),line_len)
+            #p.draw.line(screen,(255,0,77), ((x_axis[len(x_axis)-1]), (y_axis[len(y_axis)-1])), (x_screen, y_axis[len(y_axis)-1]),line_len)
             
 
-            p.draw.circle(screen, (0, 0, 255), (x_screen, final_y2[len(final_y2)-1]), 5)
+            p.draw.circle(screen, (200, 0, 255), (x_screen, final_y2[len(final_y2)-1]), 5)
 
-            p.draw.line(screen,(255,0,77), ((x_axis[len(x_axis)-1]), (final_y2[len(final_y2)-1])), (x_screen, final_y2[len(final_y2)-1]),line_len)
+            p.draw.line(screen,(200, 0, 255), ((x_axis[len(x_axis)-1]), (final_y2[len(final_y2)-1])), (x_screen, final_y2[len(final_y2)-1]),line_len)
 
         #print(rects)
         p.display.update()

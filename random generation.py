@@ -94,7 +94,10 @@ for i in range(amount):
     final_y.append(int((y_new[num] + y_new2[num]+y_axis[num])/3))
     num +=1
 
-
+num = 0
+for i in range(amount):
+    final_y2.append(int((y_new2[num]+y_axis[num])/2))
+    num +=1
 
 p.init()
 
@@ -102,6 +105,8 @@ screen = p.display.set_mode([x_screen, y_screen])
 
 running = True
 rects = []
+rects2 = []
+
 screen.fill((205,205,205))
 while running:
 
@@ -117,10 +122,10 @@ while running:
         #p.draw.rect(screen, (0,0,255), (x_axis[time],0,x_interval,y_axis[time]))
         rects.append((x_axis[time],y_axis[time],x_interval, y_screen-y_axis[time]))
 
-        p.draw.rect(screen, (200,0,255), (rects[time] ))
+        #p.draw.rect(screen, (200,0,255), (rects[time] ))
         #Pure random (multiple lines) black
-        #p.draw.circle(screen, (0, 0, 0), ( x_axis[time], y_axis[time]), 5)
-        #p.draw.line(screen,(0,0,0),(x_axis[time],y_axis[time]),(x_axis[time+number],y_axis[time+number]),line_len)
+        p.draw.circle(screen, (0, 0, 0), ( x_axis[time], y_axis[time]), 5)
+        p.draw.line(screen,(0,0,0),(x_axis[time],y_axis[time]),(x_axis[time+number],y_axis[time+number]),line_len)
 
         #Avg of 3 points (triangle) green
         #p.draw.circle(screen, (0, 255, 0), ( x_axis[time], y_new[time]), 5)
@@ -135,8 +140,12 @@ while running:
         p.draw.line(screen,(0,0,255),(x_axis[time],final_y[time]),(x_axis[time+number],final_y[time+number]),line_len+1)
 
         # avg of 
-        p.draw.circle(screen, (0, 0, 255), ( x_axis[time], final_y[time]), 5)
-        p.draw.line(screen,(0,0,255),(x_axis[time],final_y[time]),(x_axis[time+number],final_y[time+number]),line_len+1)
+        #rects2.append((x_axis[time],final_y[time],x_interval, y_screen-final_y[time]))
+       # p.draw.rect(screen, (20,0,25), (rects2[time] ))
+
+
+        p.draw.circle(screen, (200, 0, 255), ( x_axis[time], final_y2[time]), 5)
+        p.draw.line(screen,(200,0,255),(x_axis[time],final_y2[time]),(x_axis[time+number],final_y2[time+number]),line_len+1)
 
         time += 1
         #print(time)
@@ -148,7 +157,12 @@ while running:
 
             p.draw.circle(screen, (0, 0, 255), (x_screen, y_axis[len(y_axis)-1]), 5)
 
-            p.draw.line(screen,(255,255,77), ((x_axis[len(x_axis)-1]), (y_axis[len(y_axis)-1])), (x_screen, y_axis[len(y_axis)-1]),line_len)
+            p.draw.line(screen,(255,0,77), ((x_axis[len(x_axis)-1]), (y_axis[len(y_axis)-1])), (x_screen, y_axis[len(y_axis)-1]),line_len)
+            
+
+            p.draw.circle(screen, (0, 0, 255), (x_screen, final_y2[len(final_y2)-1]), 5)
+
+            p.draw.line(screen,(255,0,77), ((x_axis[len(x_axis)-1]), (final_y2[len(final_y2)-1])), (x_screen, final_y2[len(final_y2)-1]),line_len)
 
         #print(rects)
         p.display.update()
